@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class FearService implements DatabaseService<Fear> {
+public class FeaService  {
 
     private FearDao fearDao;
 
@@ -19,13 +19,11 @@ public class FearService implements DatabaseService<Fear> {
     }
 
     @Transactional
-    @Override
     public Fear get(Integer id) {
         return fearDao.findById(id);
     }
 
     @Transactional
-    @Override
     public List<Fear> getAll() {
 
         return fearDao.findAll();

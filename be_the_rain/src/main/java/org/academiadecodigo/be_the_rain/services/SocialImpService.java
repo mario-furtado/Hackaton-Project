@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class SocialImpactService implements DatabaseService<SocialImpact> {
+public class SocialImpService  {
 
     private SocialImpactDao socialImpactDao;
 
@@ -19,13 +19,11 @@ public class SocialImpactService implements DatabaseService<SocialImpact> {
     }
 
     @Transactional
-    @Override
     public SocialImpact get(Integer id) {
         return socialImpactDao.findById(id);
     }
 
     @Transactional
-    @Override
     public List<SocialImpact> getAll() {
 
         return socialImpactDao.findAll();

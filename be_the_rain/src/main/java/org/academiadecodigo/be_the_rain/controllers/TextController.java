@@ -8,24 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("api/text")
+@RequestMapping("/api/text")
 
 public class TextController {
 
-    private AntiMaskDatabaseService antiMaskDatabaseService;
-    private AntiVaxDatabaseService antiVaxDatabaseService;
-    private DiscriminationService discriminationService;
-    private FearService fearService;
-    private InstitutionService institutionService;
-    private PeerReviewedService peerReviewedService;
-    private PollutionService pollutionService;
-    private SocialImpactService socialImpactService;
+    private AntiMaskService antiMaskService;
+    private AntiVaxService antiVaxService;
+    private DiscriminService discriminService;
+    private FeaService feaService;
+    private InstituService instituService;
+    private PeerRevService peerRevService;
+    private PollutService pollutService;
+    private SocialImpService socialImpService;
 
     private AntiVaxConverter antiVaxConverter;
     private AntiMaskConverter antiMaskConverter;
@@ -38,42 +36,45 @@ public class TextController {
 
 
     @Autowired
-    public void setAntiVaxDatabaseService(AntiVaxDatabaseService antiVaxDatabaseService) {
-        this.antiVaxDatabaseService = antiVaxDatabaseService;
+    public void setAntiVaxService(AntiVaxService antiVaxService) {
+        this.antiVaxService = antiVaxService;
     }
 
     @Autowired
-    public void setAntiMaskDatabaseService(AntiMaskDatabaseService antiMaskDatabaseService) {
-        this.antiMaskDatabaseService = antiMaskDatabaseService;
+    public void setAntiMaskService(AntiMaskService antiMaskService) {
+        this.antiMaskService = antiMaskService;
     }
     @Autowired
-    public void setDiscriminationService(DiscriminationService discriminationService) {
-        this.discriminationService = discriminationService;
+    public void setDiscriminService(DiscriminService discriminService) {
+        this.discriminService = discriminService;
     }
     @Autowired
-    public void setFearService(FearService fearService) {
-        this.fearService = fearService;
+    public void setFeaService(FeaService feaService) {
+        this.feaService = feaService;
+    }
+
+    @Autowired
+    public void setInstituService(InstituService instituService) {
+        this.instituService = instituService;
     }
     @Autowired
-    public void setInstitutionService(InstitutionService institutionService) {
-        this.institutionService = institutionService;
+    public void setPeerRevService(PeerRevService peerRevService) {
+        this.peerRevService = peerRevService;
     }
     @Autowired
-    public void setPeerReviewedService(PeerReviewedService peerReviewedService) {
-        this.peerReviewedService = peerReviewedService;
+    public void setPollutService(PollutService pollutService) {
+        this.pollutService = pollutService;
     }
+
     @Autowired
-    public void setPollutionService(PollutionService pollutionService) {
-        this.pollutionService = pollutionService;
-    }
-    @Autowired
-    public void setSocialImpactService(SocialImpactService socialImpactService) {
-        this.socialImpactService = socialImpactService;
+    public void setSocialImpService(SocialImpService socialImpService) {
+        this.socialImpService = socialImpService;
     }
     @Autowired
     public void setAntiVaxConverter(AntiVaxConverter antiVaxConverter) {
         this.antiVaxConverter = antiVaxConverter;
     }
+
     @Autowired
     public void setAntiMaskConverter(AntiMaskConverter antiMaskConverter) {
         this.antiMaskConverter = antiMaskConverter;
@@ -86,6 +87,7 @@ public class TextController {
     public void setFearConverter(FearConverter fearConverter) {
         this.fearConverter = fearConverter;
     }
+
     @Autowired
     public void setInstitutionConverter(InstitutionConverter institutionConverter) {
         this.institutionConverter = institutionConverter;
@@ -107,21 +109,21 @@ public class TextController {
     @RequestMapping(method = RequestMethod.GET, path = "/antiMask/{id}")
     public ResponseEntity<DtoAntiMask> showAntiMask(@PathVariable Integer id){
 
-        AntiMask antiMask = antiMaskDatabaseService.get(id);
+        AntiMask antiMask = antiMaskService.get(id);
 
         return new ResponseEntity<>(antiMaskConverter.convert(antiMask), HttpStatus.OK);
     }
     @RequestMapping(method = RequestMethod.GET, path = "/antiVax/{id}")
     public ResponseEntity<DtoAntiVax> showAntiVax(@PathVariable Integer id){
 
-        AntiVax antiVax = antiVaxDatabaseService.get(id);
+        AntiVax antiVax = antiVaxService.get(id);
 
         return new ResponseEntity<>(antiVaxConverter.convert(antiVax), HttpStatus.OK);
     }
     @RequestMapping(method = RequestMethod.GET, path = "/discrimination/{id}")
     public ResponseEntity<DtoDiscrimination> showDiscrimination(@PathVariable Integer id){
 
-        Discrimination discrimination = discriminationService.get(id);
+        Discrimination discrimination = discriminService.get(id);
 
         return new ResponseEntity<>(discriminationConverter.convert(discrimination), HttpStatus.OK);
     }
@@ -129,35 +131,35 @@ public class TextController {
 
     public ResponseEntity<DtoFear> showFear(@PathVariable Integer id){
 
-        Fear fear = fearService.get(id);
+        Fear fear = feaService.get(id);
 
         return new ResponseEntity<>(fearConverter.convert(fear), HttpStatus.OK);
     }
     @RequestMapping(method = RequestMethod.GET, path = "/institution/{id}")
     public ResponseEntity<DtoInstitution> showInstitution(@PathVariable Integer id){
 
-        Institution institution = institutionService.get(id);
+        Institution institution = instituService.get(id);
 
         return new ResponseEntity<>(institutionConverter.convert(institution), HttpStatus.OK);
     }
     @RequestMapping(method = RequestMethod.GET, path = "/peerReviewed/{id}")
     public ResponseEntity<DtoPeerReviewed> showPeer(@PathVariable Integer id){
 
-        PeerReviewed peerReviewed = peerReviewedService.get(id);
+        PeerReviewed peerReviewed = peerRevService.get(id);
 
         return new ResponseEntity<>(peerReviewedConverter.convert(peerReviewed), HttpStatus.OK);
     }
     @RequestMapping(method = RequestMethod.GET, path = "/pollution/{id}")
     public ResponseEntity<DtoPollution> showPollution(@PathVariable Integer id){
 
-        Pollution pollution = pollutionService.get(id);
+        Pollution pollution = pollutService.get(id);
 
         return new ResponseEntity<>(pollutionConverter.convert(pollution), HttpStatus.OK);
     }
     @RequestMapping(method = RequestMethod.GET, path = "/social/{id}")
     public ResponseEntity<DtoSocialImpact> showSocial(@PathVariable Integer id){
 
-        SocialImpact socialImpact = socialImpactService.get(id);
+        SocialImpact socialImpact = socialImpService.get(id);
 
         return new ResponseEntity<>(socialImpactConverter.convert(socialImpact), HttpStatus.OK);
     }

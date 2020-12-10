@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class AntiMaskDatabaseService implements DatabaseService<AntiMask> {
+public class AntiMaskService  {
 
     private AntiMaskDao antiMaskDao;
 
@@ -19,14 +19,12 @@ public class AntiMaskDatabaseService implements DatabaseService<AntiMask> {
     }
 
     @Transactional
-    @Override
     public AntiMask get(Integer id) {
 
         return antiMaskDao.findById(id);
     }
 
     @Transactional
-    @Override
     public List<AntiMask> getAll() {
         return antiMaskDao.findAll();
     }

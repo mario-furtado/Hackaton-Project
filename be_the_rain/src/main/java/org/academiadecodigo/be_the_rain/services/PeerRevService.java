@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class PeerReviewedService implements DatabaseService<PeerReviewed> {
+public class PeerRevService  {
 
     private PeerReviewedDao peerReviewedDao;
 
@@ -19,13 +19,11 @@ public class PeerReviewedService implements DatabaseService<PeerReviewed> {
     }
 
     @Transactional
-    @Override
     public PeerReviewed get(Integer id) {
         return peerReviewedDao.findById(id);
     }
 
     @Transactional
-    @Override
     public List<PeerReviewed> getAll() {
 
         return peerReviewedDao.findAll();

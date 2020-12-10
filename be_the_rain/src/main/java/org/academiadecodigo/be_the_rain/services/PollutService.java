@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class PollutionService implements DatabaseService<Pollution> {
+public class PollutService  {
 
     private PollutionDao pollutionDao;
 
@@ -19,13 +19,11 @@ public class PollutionService implements DatabaseService<Pollution> {
     }
 
     @Transactional
-    @Override
     public Pollution get(Integer id) {
         return pollutionDao.findById(id);
     }
 
     @Transactional
-    @Override
     public List<Pollution> getAll() {
 
         return pollutionDao.findAll();

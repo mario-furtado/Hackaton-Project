@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class InstitutionService implements DatabaseService<Institution> {
+public class InstituService  {
 
     private InstitutionDao institutionDao;
 
@@ -19,13 +19,11 @@ public class InstitutionService implements DatabaseService<Institution> {
     }
 
     @Transactional
-    @Override
     public Institution get(Integer id) {
         return institutionDao.findById(id);
     }
 
     @Transactional
-    @Override
     public List<Institution> getAll() {
 
         return institutionDao.findAll();

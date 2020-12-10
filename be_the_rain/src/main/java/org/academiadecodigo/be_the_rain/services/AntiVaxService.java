@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class AntiVaxDatabaseService implements DatabaseService<AntiVax> {
+public class AntiVaxService  {
 
     private AntiVaxDao antiVaxDao;
 
@@ -19,13 +19,11 @@ public class AntiVaxDatabaseService implements DatabaseService<AntiVax> {
     }
 
     @Transactional
-    @Override
     public AntiVax get(Integer id) {
         return antiVaxDao.findById(id);
     }
 
     @Transactional
-    @Override
     public List<AntiVax> getAll() {
         return antiVaxDao.findAll();
     }
