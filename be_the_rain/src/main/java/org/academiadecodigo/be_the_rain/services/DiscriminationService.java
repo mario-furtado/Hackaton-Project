@@ -4,7 +4,9 @@ import org.academiadecodigo.be_the_rain.dao.DiscriminationDao;
 import org.academiadecodigo.be_the_rain.models.Discrimination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.TransactionScoped;
 import java.util.Date;
 
 @Service
@@ -17,11 +19,13 @@ public class DiscriminationService implements DatabaseService<Discrimination> {
         this.discriminationDao = discriminationDao;
     }
 
+    @Transactional
     @Override
     public Discrimination get(Integer id) {
         return null;
     }
 
+    @Transactional
     @Override
     public void getAll() {
 
