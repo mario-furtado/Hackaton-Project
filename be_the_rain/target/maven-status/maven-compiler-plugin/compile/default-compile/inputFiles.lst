@@ -21,7 +21,6 @@
 /Users/codecadet/Desktop/shrimp/Hackaton-Project/be_the_rain/src/main/java/org/academiadecodigo/be_the_rain/models/Pollution.java
 /Users/codecadet/Desktop/shrimp/Hackaton-Project/be_the_rain/src/main/java/org/academiadecodigo/be_the_rain/services/DiscriminService.java
 /Users/codecadet/Desktop/shrimp/Hackaton-Project/be_the_rain/src/main/java/org/academiadecodigo/be_the_rain/Dto/DtoFear.java
-/Users/codecadet/Desktop/shrimp/Hackaton-Project/be_the_rain/src/main/java/org/academiadecodigo/be_the_rain/services/DatabaseService.java
 /Users/codecadet/Desktop/shrimp/Hackaton-Project/be_the_rain/src/main/java/org/academiadecodigo/be_the_rain/converters/InstitutionConverter.java
 /Users/codecadet/Desktop/shrimp/Hackaton-Project/be_the_rain/src/main/java/org/academiadecodigo/be_the_rain/models/AbstractModel.java
 /Users/codecadet/Desktop/shrimp/Hackaton-Project/be_the_rain/src/main/java/org/academiadecodigo/be_the_rain/dao/FearDao.java

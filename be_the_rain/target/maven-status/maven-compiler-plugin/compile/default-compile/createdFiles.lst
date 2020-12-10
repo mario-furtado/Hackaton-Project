@@ -18,7 +18,6 @@ org/academiadecodigo/be_the_rain/converters/InstitutionConverter.class
 org/academiadecodigo/be_the_rain/models/Fear.class
 org/academiadecodigo/be_the_rain/models/AntiMask.class
 org/academiadecodigo/be_the_rain/models/Discrimination.class
-org/academiadecodigo/be_the_rain/services/DatabaseService.class
 org/academiadecodigo/be_the_rain/models/Pollution.class
 org/academiadecodigo/be_the_rain/models/SocialImpact.class
 org/academiadecodigo/be_the_rain/Dto/DtoPollution.class
