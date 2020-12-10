@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.transaction.TransactionScoped;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class DiscriminationService implements DatabaseService<Discrimination> {
@@ -22,12 +23,13 @@ public class DiscriminationService implements DatabaseService<Discrimination> {
     @Transactional
     @Override
     public Discrimination get(Integer id) {
-        return null;
+        return discriminationDao.findById(id);
     }
 
     @Transactional
     @Override
-    public void getAll() {
+    public List<Discrimination> getAll() {
 
+        return discriminationDao.findAll();
     }
 }

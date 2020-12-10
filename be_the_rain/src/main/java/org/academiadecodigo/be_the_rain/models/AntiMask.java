@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "antiVax")
+@Table(name = "antiMask")
 public class AntiMask extends AbstractModel{
 
     private String title;

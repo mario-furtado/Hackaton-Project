@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class PeerReviewedService implements DatabaseService<PeerReviewed> {
 
@@ -19,12 +21,13 @@ public class PeerReviewedService implements DatabaseService<PeerReviewed> {
     @Transactional
     @Override
     public PeerReviewed get(Integer id) {
-        return null;
+        return peerReviewedDao.findById(id);
     }
 
     @Transactional
     @Override
-    public void getAll() {
+    public List<PeerReviewed> getAll() {
 
+        return peerReviewedDao.findAll();
     }
 }

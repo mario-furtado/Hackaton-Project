@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class SocialImpactService implements DatabaseService<SocialImpact> {
 
@@ -19,12 +21,13 @@ public class SocialImpactService implements DatabaseService<SocialImpact> {
     @Transactional
     @Override
     public SocialImpact get(Integer id) {
-        return null;
+        return socialImpactDao.findById(id);
     }
 
     @Transactional
     @Override
-    public void getAll() {
+    public List<SocialImpact> getAll() {
 
+        return socialImpactDao.findAll();
     }
 }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class PollutionService implements DatabaseService<Pollution> {
 
@@ -19,12 +21,13 @@ public class PollutionService implements DatabaseService<Pollution> {
     @Transactional
     @Override
     public Pollution get(Integer id) {
-        return null;
+        return pollutionDao.findById(id);
     }
 
     @Transactional
     @Override
-    public void getAll() {
+    public List<Pollution> getAll() {
 
+        return pollutionDao.findAll();
     }
 }

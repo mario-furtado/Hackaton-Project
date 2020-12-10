@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class InstitutionService implements DatabaseService<Institution> {
 
@@ -19,12 +21,13 @@ public class InstitutionService implements DatabaseService<Institution> {
     @Transactional
     @Override
     public Institution get(Integer id) {
-        return null;
+        return institutionDao.findById(id);
     }
 
     @Transactional
     @Override
-    public void getAll() {
+    public List<Institution> getAll() {
 
+        return institutionDao.findAll();
     }
 }

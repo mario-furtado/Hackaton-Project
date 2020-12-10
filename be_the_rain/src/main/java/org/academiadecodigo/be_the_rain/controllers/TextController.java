@@ -7,7 +7,7 @@ import org.academiadecodigo.be_the_rain.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/text")
 
 public class TextController {
+
     private AntiMaskDatabaseService antiMaskDatabaseService;
     private AntiVaxDatabaseService antiVaxDatabaseService;
     private DiscriminationService discriminationService;
@@ -37,13 +38,13 @@ public class TextController {
 
 
     @Autowired
-    public void setAntiMaskDatabaseService(AntiMaskDatabaseService antiMaskDatabaseService) {
-        this.antiMaskDatabaseService = antiMaskDatabaseService;
+    public void setAntiVaxDatabaseService(AntiVaxDatabaseService antiVaxDatabaseService) {
+        this.antiVaxDatabaseService = antiVaxDatabaseService;
     }
 
     @Autowired
-    public void setAntiVaxDatabaseService(AntiVaxDatabaseService antiVaxDatabaseService) {
-        this.antiVaxDatabaseService = antiVaxDatabaseService;
+    public void setAntiMaskDatabaseService(AntiMaskDatabaseService antiMaskDatabaseService) {
+        this.antiMaskDatabaseService = antiMaskDatabaseService;
     }
     @Autowired
     public void setDiscriminationService(DiscriminationService discriminationService) {
@@ -96,6 +97,11 @@ public class TextController {
     @Autowired
     public void setSocialImpactConverter(SocialImpactConverter socialImpactConverter) {
         this.socialImpactConverter = socialImpactConverter;
+    }
+
+    @Autowired
+    public void setPeerReviewedConverter(PeerReviewedConverter peerReviewedConverter) {
+        this.peerReviewedConverter = peerReviewedConverter;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/antiMask/{id}")
