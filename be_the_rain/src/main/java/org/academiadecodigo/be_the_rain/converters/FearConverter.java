@@ -14,6 +14,7 @@ public class FearConverter extends GenericConverter<Fear, DtoFear> {
 
         dtoFear.setTitle(model.getTitle());
         dtoFear.setContent(model.getContent());
+        dtoFear.setLink(model.getLink());
         return dtoFear;
     }
 }

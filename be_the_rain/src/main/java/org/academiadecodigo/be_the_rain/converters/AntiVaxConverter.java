@@ -15,7 +15,7 @@ public class AntiVaxConverter extends GenericConverter<AntiVax, DtoAntiVax> {
 
         dtoAntiVax.setContent(model.getContent());
         dtoAntiVax.setTitle(model.getTitle());
-
+        dtoAntiVax.setLink(model.getLink());
         return dtoAntiVax;
     }
 }

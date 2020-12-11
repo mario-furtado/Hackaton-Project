@@ -14,6 +14,7 @@ public class SocialImpactConverter extends GenericConverter<SocialImpact, DtoSoc
 
         dtoSocialImpact.setContent(model.getContent());
         dtoSocialImpact.setTitle(model.getTitle());
+        dtoSocialImpact.setLink(model.getLink());
         return dtoSocialImpact;
     }
 }

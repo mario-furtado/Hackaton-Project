@@ -13,6 +13,7 @@ public class AntiMaskConverter extends GenericConverter<AntiMask, DtoAntiMask> {
 
         dtoAntiMask.setTitle(model.getTitle());
         dtoAntiMask.setContent(model.getContent());
+        dtoAntiMask.setLink(model.getLink());
         return dtoAntiMask ;
     }
 }

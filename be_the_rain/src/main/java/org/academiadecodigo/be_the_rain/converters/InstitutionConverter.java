@@ -14,6 +14,7 @@ public class InstitutionConverter extends GenericConverter<Institution, DtoInsti
 
         dtoInstitution.setContent(model.getContent());
         dtoInstitution.setTitle(model.getTitle());
+        dtoInstitution.setLink(model.getLink());
         return dtoInstitution;
     }
 }

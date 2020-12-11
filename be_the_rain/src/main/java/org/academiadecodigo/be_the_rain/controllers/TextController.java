@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/text")
 
-public class TextController {
+public class TextController  {
 
     private AntiMaskService antiMaskService;
     private AntiVaxService antiVaxService;
@@ -105,6 +105,8 @@ public class TextController {
     public void setPeerReviewedConverter(PeerReviewedConverter peerReviewedConverter) {
         this.peerReviewedConverter = peerReviewedConverter;
     }
+
+
 
     @RequestMapping(method = RequestMethod.GET, path = "/antiMask/{id}")
     public ResponseEntity<DtoAntiMask> showAntiMask(@PathVariable Integer id){

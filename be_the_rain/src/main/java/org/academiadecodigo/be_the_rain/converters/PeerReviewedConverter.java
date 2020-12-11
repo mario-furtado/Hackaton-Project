@@ -13,6 +13,7 @@ public class PeerReviewedConverter extends GenericConverter<PeerReviewed, DtoPee
         DtoPeerReviewed dtoPeerReviewed = new DtoPeerReviewed();
         dtoPeerReviewed.setContent(model.getContent());
         dtoPeerReviewed.setTitle(model.getTitle());
+        dtoPeerReviewed.setLink(model.getLink());
         return dtoPeerReviewed;
     }
 }

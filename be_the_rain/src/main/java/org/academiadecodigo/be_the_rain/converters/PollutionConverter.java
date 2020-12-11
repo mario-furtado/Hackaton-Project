@@ -14,6 +14,7 @@ public class PollutionConverter extends GenericConverter<Pollution, DtoPollution
 
         dtoPollution.setContent(model.getContent());
         dtoPollution.setTitle(model.getTitle());
+        dtoPollution.setLink(model.getLink());
         return dtoPollution;
     }
 }

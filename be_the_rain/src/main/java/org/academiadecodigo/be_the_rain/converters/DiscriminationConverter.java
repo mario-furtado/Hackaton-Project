@@ -14,6 +14,7 @@ public class DiscriminationConverter extends GenericConverter<Discrimination, Dt
 
         dtoDiscrimination.setContent(model.getContent());
         dtoDiscrimination.setTitle(model.getTitle());
+        dtoDiscrimination.setLink(model.getLink());
         return dtoDiscrimination;
     }
 }

@@ -1,5 +1,6 @@
 package org.academiadecodigo.be_the_rain.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -7,8 +8,21 @@ import javax.persistence.Table;
 @Table(name = "socialImpact")
 public class SocialImpact extends AbstractModel {
 
+    @Column(columnDefinition = "LONGTEXT")
     private String title;
+    @Column(columnDefinition = "LONGTEXT")
     private String content;
+    @Column(columnDefinition = "LONGTEXT")
+    private String link;
+
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public String getTitle() {
         return title;
