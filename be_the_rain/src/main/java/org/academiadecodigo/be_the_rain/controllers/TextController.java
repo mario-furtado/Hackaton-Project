@@ -110,7 +110,7 @@ public class TextController  {
 
     @RequestMapping(method = RequestMethod.GET, path = "/antiMask/{id}")
     public ResponseEntity<DtoAntiMask> showAntiMask(@PathVariable Integer id){
-
+        System.out.println("HTLLLLLLLOOOOO");
         AntiMask antiMask = antiMaskService.get(id);
 
         return new ResponseEntity<>(antiMaskConverter.convert(antiMask), HttpStatus.OK);

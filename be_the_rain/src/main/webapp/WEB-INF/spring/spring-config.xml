@@ -22,12 +22,12 @@
         <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
         <!-- c3p0 database connection pool management -->
-        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 
                 <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
                 <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/shadowWebsite?useSSL=false"/>
-                <property name="user" value="root"/>
-                <property name="password" value=""/>
+                <property name="user" value="alan"/>
+                <property name="password" value="Kal1l1nu%r00t"/>
 
                 <!-- c3p0 database connection pool management properties -->
                 <property name="minPoolSize" value="1"/>
@@ -52,7 +52,7 @@
                 </property>
                 <property name="jpaProperties">
                         <map>
-                                <entry key="hibernate.show_sql" value="false" />
+                                <entry key="hibernate.show_sql" value="true" />
                                 <entry key="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
                                 <!-- Run as create once to initialize the schema -->
                                 <entry key="hibernate.hbm2ddl.auto" value="create"/>

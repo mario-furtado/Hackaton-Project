@@ -1,7 +1,9 @@
+
+var urlApi = 'http://85.245.3.152:8080/be-the-rain/api/text/';
 $(document).ready(function() {
     for(var i = 1; i < 9; i++){
     $.ajax({
-        url: 'http://192.168.1.123:8080/be-the-rain/api/text/antiVax/' + i,
+        url: urlApi + 'antiVax/' + i,
         type: 'GET',
         async: true,
         success: successCallback,
@@ -10,7 +12,7 @@ $(document).ready(function() {
     }
     for(var i = 1; i < 9; i++){
         $.ajax({
-            url: 'http://192.168.1.123:8080/be-the-rain/api/text/discrimination/' + i,
+            url: urlApi + 'discrimination/' + i,
             type: 'GET',
             async: true,
             success: successCallback1,
@@ -19,7 +21,7 @@ $(document).ready(function() {
     }
     for(var i = 1; i < 13; i++){
         $.ajax({
-            url: 'http://192.168.1.123:8080/be-the-rain/api/text/fear/' + i,
+            url: urlApi + 'fear/' + i,
             type: 'GET',
             async: true,
             success: successCallback2,
@@ -28,7 +30,7 @@ $(document).ready(function() {
     }
     for(var i = 1; i < 7; i++){
         $.ajax({
-            url: 'http://192.168.1.123:8080/be-the-rain/api/text/antiMask/' + i,
+            url: urlApi + 'antiMask/' + i,
             type: 'GET',
             async: true,
             success: successCallback3,
@@ -37,7 +39,7 @@ $(document).ready(function() {
         }
         for(var i = 1; i < 9; i++){
             $.ajax({
-                url: 'http://192.168.1.123:8080/be-the-rain/api/text/pollution/' + i,
+                url: urlApi + 'pollution/' + i,
                 type: 'GET',
                 async: true,
                 success: successCallback4,
@@ -46,7 +48,7 @@ $(document).ready(function() {
         }
         for(var i = 1; i < 9; i++){
             $.ajax({
-                url: 'http://192.168.1.123:8080/be-the-rain/api/text/social/' + i,
+                url: urlApi + 'social/' + i,
                 type: 'GET',
                 async: true,
                 success: successCallback5,
@@ -55,7 +57,7 @@ $(document).ready(function() {
         }
         for(var i = 1; i < 7; i++){
             $.ajax({
-                url: 'http://192.168.1.123:8080/be-the-rain/api/text/institution/' + i,
+                url: urlApi + 'institution/' + i,
                 type: 'GET',
                 async: true,
                 success: successCallback6,
@@ -64,7 +66,7 @@ $(document).ready(function() {
         }
         for(var i = 1; i < 7; i++){
             $.ajax({
-                url: 'http://192.168.1.123:8080/be-the-rain/api/text/peerReviewed/' + i,
+                url: urlApi + 'peerReviewed/' + i,
                 type: 'GET',
                 async: true,
                 success: successCallback7,
