@@ -26,8 +26,8 @@
 
                 <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
                 <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/shadowWebsite?useSSL=false"/>
-                <property name="user" value="alan"/>
-                <property name="password" value="Kal1l1nu%r00t"/>
+                <property name="user" value=""/>
+                <property name="password" value=""/>
 
                 <!-- c3p0 database connection pool management properties -->
                 <property name="minPoolSize" value="1"/>
