@@ -20,6 +20,10 @@ public abstract class GenericDao<T extends AbstractModel> {
         this.modelType = modelType;
     }
 
+    public void persist(T model){
+        em.persist(model);
+    }
+
     public void setEm(EntityManager em) {
         this.em = em;
     }

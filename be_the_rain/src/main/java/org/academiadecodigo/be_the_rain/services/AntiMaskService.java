@@ -28,4 +28,9 @@ public class AntiMaskService  {
     public List<AntiMask> getAll() {
         return antiMaskDao.findAll();
     }
+
+    @Transactional
+    public void persist(AntiMask model){
+        antiMaskDao.persist(model);
+    }
 }

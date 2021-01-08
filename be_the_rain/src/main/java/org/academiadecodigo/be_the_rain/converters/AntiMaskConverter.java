@@ -4,6 +4,9 @@ import org.academiadecodigo.be_the_rain.Dto.DtoAntiMask;
 import org.academiadecodigo.be_the_rain.models.AntiMask;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class AntiMaskConverter extends GenericConverter<AntiMask, DtoAntiMask> {
 
@@ -15,5 +18,11 @@ public class AntiMaskConverter extends GenericConverter<AntiMask, DtoAntiMask> {
         dtoAntiMask.setContent(model.getContent());
         dtoAntiMask.setLink(model.getLink());
         return dtoAntiMask ;
+    }
+
+    @Override
+    public List<DtoAntiMask> convertList(List<AntiMask> list) {
+
+        return list.stream().map(this::convert).collect(Collectors.toList());
     }
 }

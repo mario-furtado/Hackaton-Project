@@ -2,6 +2,7 @@ package org.academiadecodigo.be_the_rain.controllers;
 
 import org.academiadecodigo.be_the_rain.Dto.*;
 import org.academiadecodigo.be_the_rain.converters.*;
+import org.academiadecodigo.be_the_rain.crawler.*;
 import org.academiadecodigo.be_the_rain.models.*;
 import org.academiadecodigo.be_the_rain.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -33,6 +36,48 @@ public class TextController  {
     private PeerReviewedConverter peerReviewedConverter;
     private PollutionConverter pollutionConverter;
     private SocialImpactConverter socialImpactConverter;
+
+    private MaskCrawler maskCrawler;
+    private VaxCrawler vaxCrawler;
+    private DiscriminationCrawler discriminationCrawler;
+    private FearCrawler fearCrawler;
+    private InstitutionsCrawler institutionsCrawler;
+    private SocialImpactCrawler socialImpactCrawler;
+    private PeerReviewedCrawler peerReviewedCrawler;
+    private PollutionCrawler pollutionCrawler;
+
+    @Autowired
+    public void setMaskCrawler(MaskCrawler maskCrawler) {
+        this.maskCrawler = maskCrawler;
+    }
+    @Autowired
+    public void setVaxCrawler(VaxCrawler vaxCrawler) {
+        this.vaxCrawler = vaxCrawler;
+    }
+    @Autowired
+    public void setDiscriminationCrawler(DiscriminationCrawler discriminationCrawler) {
+        this.discriminationCrawler = discriminationCrawler;
+    }
+    @Autowired
+    public void setFearCrawler(FearCrawler fearCrawler) {
+        this.fearCrawler = fearCrawler;
+    }
+    @Autowired
+    public void setInstitutionsCrawler(InstitutionsCrawler institutionsCrawler) {
+        this.institutionsCrawler = institutionsCrawler;
+    }
+    @Autowired
+    public void setSocialImpactCrawler(SocialImpactCrawler socialImpactCrawler) {
+        this.socialImpactCrawler = socialImpactCrawler;
+    }
+    @Autowired
+    public void setPeerReviewedCrawler(PeerReviewedCrawler peerReviewedCrawler) {
+        this.peerReviewedCrawler = peerReviewedCrawler;
+    }
+    @Autowired
+    public void setPollutionCrawler(PollutionCrawler pollutionCrawler) {
+        this.pollutionCrawler = pollutionCrawler;
+    }
 
 
     @Autowired
@@ -106,15 +151,14 @@ public class TextController  {
         this.peerReviewedConverter = peerReviewedConverter;
     }
 
-
-
     @RequestMapping(method = RequestMethod.GET, path = "/antiMask/{id}")
     public ResponseEntity<DtoAntiMask> showAntiMask(@PathVariable Integer id){
-        System.out.println("HTLLLLLLLOOOOO");
+
         AntiMask antiMask = antiMaskService.get(id);
 
         return new ResponseEntity<>(antiMaskConverter.convert(antiMask), HttpStatus.OK);
     }
+
     @RequestMapping(method = RequestMethod.GET, path = "/antiVax/{id}")
     public ResponseEntity<DtoAntiVax> showAntiVax(@PathVariable Integer id){
 
@@ -122,6 +166,7 @@ public class TextController  {
 
         return new ResponseEntity<>(antiVaxConverter.convert(antiVax), HttpStatus.OK);
     }
+
     @RequestMapping(method = RequestMethod.GET, path = "/discrimination/{id}")
     public ResponseEntity<DtoDiscrimination> showDiscrimination(@PathVariable Integer id){
 
@@ -129,6 +174,7 @@ public class TextController  {
 
         return new ResponseEntity<>(discriminationConverter.convert(discrimination), HttpStatus.OK);
     }
+
     @RequestMapping(method = RequestMethod.GET, path = "/fear/{id}")
 
     public ResponseEntity<DtoFear> showFear(@PathVariable Integer id){
@@ -137,6 +183,7 @@ public class TextController  {
 
         return new ResponseEntity<>(fearConverter.convert(fear), HttpStatus.OK);
     }
+
     @RequestMapping(method = RequestMethod.GET, path = "/institution/{id}")
     public ResponseEntity<DtoInstitution> showInstitution(@PathVariable Integer id){
 
@@ -144,6 +191,7 @@ public class TextController  {
 
         return new ResponseEntity<>(institutionConverter.convert(institution), HttpStatus.OK);
     }
+
     @RequestMapping(method = RequestMethod.GET, path = "/peerReviewed/{id}")
     public ResponseEntity<DtoPeerReviewed> showPeer(@PathVariable Integer id){
 
@@ -151,6 +199,7 @@ public class TextController  {
 
         return new ResponseEntity<>(peerReviewedConverter.convert(peerReviewed), HttpStatus.OK);
     }
+
     @RequestMapping(method = RequestMethod.GET, path = "/pollution/{id}")
     public ResponseEntity<DtoPollution> showPollution(@PathVariable Integer id){
 
@@ -158,12 +207,86 @@ public class TextController  {
 
         return new ResponseEntity<>(pollutionConverter.convert(pollution), HttpStatus.OK);
     }
+
     @RequestMapping(method = RequestMethod.GET, path = "/social/{id}")
     public ResponseEntity<DtoSocialImpact> showSocial(@PathVariable Integer id){
 
         SocialImpact socialImpact = socialImpService.get(id);
 
         return new ResponseEntity<>(socialImpactConverter.convert(socialImpact), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/antiMask")
+    public ResponseEntity<List<DtoAntiMask>> showAntiMask(){
+
+        maskCrawler.init("masks", antiMaskService);
+        List<AntiMask> antiMask = antiMaskService.getAll();
+        System.out.println(antiMask);
+
+        return new ResponseEntity<>(antiMaskConverter.convertList(antiMask), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/antiVax")
+    public ResponseEntity<List<DtoAntiVax>> showAntiVax(){
+
+        vaxCrawler.init("vaccines+Covid19", antiVaxService);
+        List<AntiVax> antiVax = antiVaxService.getAll();
+
+        return new ResponseEntity<>(antiVaxConverter.convertList(antiVax), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/discrimination")
+    public ResponseEntity<List<DtoDiscrimination>> showDiscrimination(){
+
+        discriminationCrawler.init("discrimination+Covid19", discriminService);
+        List<Discrimination> discrimination = discriminService.getAll();
+
+        return new ResponseEntity<>(discriminationConverter.convertList(discrimination), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/fear")
+    public ResponseEntity<List<DtoFear>> showFear(){
+
+        fearCrawler.init("fear+Covid19", feaService);
+        List<Fear> fear = feaService.getAll();
+
+        return new ResponseEntity<>(fearConverter.convertList(fear), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/institution")
+    public ResponseEntity<List<DtoInstitution>> showInstitution(){
+
+        institutionsCrawler.init("institutions+Covid19", instituService);
+        List<Institution> institution = instituService.getAll();
+
+        return new ResponseEntity<>(institutionConverter.convertList(institution), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/peerReviewed")
+    public ResponseEntity<List<DtoPeerReviewed>> showPeer(){
+
+        peerReviewedCrawler.init("peer+reviewed+studies+Covid19", peerRevService);
+        List<PeerReviewed> peerReviewed = peerRevService.getAll();
+
+        return new ResponseEntity<>(peerReviewedConverter.convertList(peerReviewed), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/pollution")
+    public ResponseEntity<List<DtoPollution>> showPollution(){
+
+        pollutionCrawler.init("pollution+Covid19", pollutService);
+        List<Pollution> pollution = pollutService.getAll();
+
+        return new ResponseEntity<>(pollutionConverter.convertList(pollution), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/social")
+    public ResponseEntity<List<DtoSocialImpact>> showSocial(){
+
+        socialImpactCrawler.init("social+impact+Covid19",socialImpService);
+        List<SocialImpact> socialImpact = socialImpService.getAll();
+
+        return new ResponseEntity<>(socialImpactConverter.convertList(socialImpact), HttpStatus.OK);
     }
 
 

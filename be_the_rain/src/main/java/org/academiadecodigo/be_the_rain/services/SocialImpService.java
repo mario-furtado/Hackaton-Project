@@ -1,6 +1,7 @@
 package org.academiadecodigo.be_the_rain.services;
 
 import org.academiadecodigo.be_the_rain.dao.SocialImpactDao;
+import org.academiadecodigo.be_the_rain.models.AntiMask;
 import org.academiadecodigo.be_the_rain.models.SocialImpact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class SocialImpService  {
+public class SocialImpService {
 
     private SocialImpactDao socialImpactDao;
 
@@ -27,5 +28,10 @@ public class SocialImpService  {
     public List<SocialImpact> getAll() {
 
         return socialImpactDao.findAll();
+    }
+
+    @Transactional
+    public void persist(SocialImpact model){
+        socialImpactDao.persist(model);
     }
 }

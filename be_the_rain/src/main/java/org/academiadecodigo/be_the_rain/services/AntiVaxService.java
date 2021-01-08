@@ -1,6 +1,7 @@
 package org.academiadecodigo.be_the_rain.services;
 
 import org.academiadecodigo.be_the_rain.dao.AntiVaxDao;
+import org.academiadecodigo.be_the_rain.models.AntiMask;
 import org.academiadecodigo.be_the_rain.models.AntiVax;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class AntiVaxService  {
+public class AntiVaxService{
 
     private AntiVaxDao antiVaxDao;
 
@@ -26,5 +27,10 @@ public class AntiVaxService  {
     @Transactional
     public List<AntiVax> getAll() {
         return antiVaxDao.findAll();
+    }
+
+    @Transactional
+    public void persist(AntiVax model){
+        antiVaxDao.persist(model);
     }
 }

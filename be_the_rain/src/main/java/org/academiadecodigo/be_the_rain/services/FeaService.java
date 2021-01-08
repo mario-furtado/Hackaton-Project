@@ -1,6 +1,7 @@
 package org.academiadecodigo.be_the_rain.services;
 
 import org.academiadecodigo.be_the_rain.dao.FearDao;
+import org.academiadecodigo.be_the_rain.models.AntiMask;
 import org.academiadecodigo.be_the_rain.models.Fear;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,10 @@ public class FeaService  {
     public List<Fear> getAll() {
 
         return fearDao.findAll();
+    }
+
+    @Transactional
+    public void persist(Fear model){
+        fearDao.persist(model);
     }
 }
