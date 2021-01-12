@@ -49,7 +49,7 @@ public class PeerReviewedCrawler {
         Elements questions = doc.select("a[href]");
 
         for(Element link: questions) {
-            // System.out.println(link);
+
             String newUrl = link.attr("href");
 
             if (newUrl.startsWith("q?doi")) {
@@ -61,7 +61,7 @@ public class PeerReviewedCrawler {
                         visitedUrls.put(newUrl,text.text());
                         PeerReviewed peerReviewed = new PeerReviewed();
                         peerReviewed.setLink(newUrl);
-                        peerReviewed.setTitle("Peer Reviewed Studies");
+                        peerReviewed.setTitle("Peer-Reviewed-Studies");
                         peerReviewed.setContent(text.text());
                         peerRevService.persist(peerReviewed);
                         break;

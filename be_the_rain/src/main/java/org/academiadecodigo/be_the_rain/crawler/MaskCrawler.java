@@ -66,7 +66,7 @@ public class MaskCrawler {
                         visitedUrls.put(newUrl,text.text());
                         AntiMask antiMask = new AntiMask();
                         antiMask.setLink(newUrl);
-                        antiMask.setTitle("Anti-mask");
+                        antiMask.setTitle("Anti-Mask");
                         antiMask.setContent(text.text());
                         antiMaskService.persist(antiMask);
                         break;

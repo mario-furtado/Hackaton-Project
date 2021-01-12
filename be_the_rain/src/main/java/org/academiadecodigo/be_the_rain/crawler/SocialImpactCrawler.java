@@ -49,7 +49,7 @@ public class SocialImpactCrawler {
         Elements questions = doc.select("a[href]");
 
         for(Element link: questions) {
-            // System.out.println(link);
+
             String newUrl = link.attr("href");
 
             if (newUrl.startsWith("q?doi")) {
@@ -61,7 +61,7 @@ public class SocialImpactCrawler {
                         visitedUrls.put(newUrl,text.text());
                         SocialImpact socialImpact = new SocialImpact();
                         socialImpact.setLink(newUrl);
-                        socialImpact.setTitle("Social Impact");
+                        socialImpact.setTitle("Social-Impact");
                         socialImpact.setContent(text.text());
                         socialImpService.persist(socialImpact);
                         break;
