@@ -221,7 +221,6 @@ public class TextController  {
 
         maskCrawler.init("masks", antiMaskService);
         List<AntiMask> antiMask = antiMaskService.getAll();
-        System.out.println(antiMask);
 
         return new ResponseEntity<>(antiMaskConverter.convertList(antiMask), HttpStatus.OK);
     }
