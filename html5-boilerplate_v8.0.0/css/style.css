@@ -4,6 +4,10 @@ body{
     line-height: 1.5;
 } 
 
+html {
+    scroll-behavior: smooth;
+}
+
 .scroll{
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
@@ -49,6 +53,10 @@ button{
  100%{
      transform: rotate(360deg);
  }
+}
+
+audio{
+    margin-left: 40px;
 }
 
 .section-title{
@@ -241,9 +249,6 @@ button{
 }
 
 .btn-01{
-    position: absolute;
-    top: 750px;
-    left: 800px;
     background-color: #FF9800;
     color: black;
     border: 2px solid transparent;
@@ -254,8 +259,12 @@ button{
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
-    display: inline-block;
+    display: block;
     transition: all 0.5s ease;
+    margin-left: 40vw;
+    margin-right: 8vw;
+    margin-top: 3vw;
+    margin-bottom: 5vw;
 }
 
 .btn-01:hover{
@@ -283,11 +292,14 @@ button{
     scroll-snap-align: center;
 }
 
-/*.about-section .about-img{
+
+/*????*/
+.about-section .about-img{
     flex: 0 0 33.33%;
     max-width: 33.33%;
     padding: 0 15px;
-}*/
+    
+}
 
 .about-section .about-img .img-box img{
     width: 100%;
@@ -365,13 +377,56 @@ button{
     scroll-snap-align: start;
 }
 
-section{
+/*section{
     overflow-y: scroll;
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
     
-}
+}*/
 
 .Vax li{
     text-decoration: none;
 }
+
+.list{
+    margin-left: 30vw;
+    display: block;
+}
+
+.linked{
+    text-align: center;
+    font-size: 15px;
+    
+}
+
+/*.commit{
+    text-decoration: none;
+    background-color: #FF9800;
+    border: black;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+.commit:hover{
+    text-decoration: none;
+    background-color: rgba(255,255,255,0);
+    border-style: solid;
+    border-color: #FF9800;
+    color: #FF9800;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 30px;
+}
+*/
