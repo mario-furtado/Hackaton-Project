@@ -430,3 +430,10 @@ audio{
     border-radius: 30px;
 }
 */
+.cont-img{
+    width: 55vw;
+    height: auto;
+    margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
